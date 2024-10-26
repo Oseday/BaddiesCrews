@@ -1,8 +1,6 @@
-# Welcome to your CDK TypeScript project
+# Baddies Game Crews CDK
 
-This is a blank project for CDK development with TypeScript.
-
-The `cdk.json` file tells the CDK Toolkit how to execute your app.
+This is a CDK project that creates the infrastructure for the Baddies Game Crews project.
 
 ## Useful commands
 

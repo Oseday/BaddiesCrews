@@ -2,10 +2,20 @@ import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as dynamodb from 'aws-cdk-lib/aws-dynamodb';
+import * as ec2 from 'aws-cdk-lib/aws-ec2';
 
 export class BaddiesCrewsStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
+
+    // Create a VPC with three public subnets in three availability zones with default NAT gateways and route tables
+    const vpc = ec2.Vpc.fromLookup(this, "VPC", {
+      isDefault: true,
+    });
+
+
+
+
 
     // Define the Lambda function resource
     const BaddiesCrewsFunction = new lambda.Function(this, "BaddiesCrews", {
@@ -76,5 +86,8 @@ export class BaddiesCrewsStack extends cdk.Stack {
 
     // Add an environment variable to the Lambda function with the DynamoDB table name
     BaddiesCrewsFunction.addEnvironment("BaddiesCrewsTableName", BaddiesCrewsTable.tableName);
+
+
+
   }
 }
